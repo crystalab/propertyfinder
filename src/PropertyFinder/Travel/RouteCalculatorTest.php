@@ -35,4 +35,28 @@ class RouteCalculatorTest extends TestCase
         
         $this->assertCount(count($input), $actual->getRouteLegs());
     }
+    
+    /** @test */
+    public function calculateRouteShouldReturnUnbrokenRoute()
+    {
+        $input = [
+            new BoardingPass\Train("Barcelona", "Gerona Airport"),
+            new BoardingPass\Train("Gerona Airport", "Stockholm"),
+            new BoardingPass\Train("Madrid", "Barcelona"),
+        ];
+        
+        $actual = $this->instance->calculateRoute($input);
+        
+        /** @var Route\RouteLeg $prevLeg */
+        $prevLeg = null;
+        foreach ($actual->getRouteLegs() as $currentLeg) {
+            if ($prevLeg === null) {
+                $prevLeg = $currentLeg;
+                continue;
+            }
+            
+            $this->assertSame($prevLeg->getDestination(), $currentLeg->getSource());
+            $prevLeg = $currentLeg;
+        }
+    }
 }

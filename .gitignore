@@ -1,4 +1,6 @@
 /vendor
 /var/logs/*
+/bin/*
 
 !**/*/.gitkeep
+!bin/travel-service

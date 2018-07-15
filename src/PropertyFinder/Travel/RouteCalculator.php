@@ -45,6 +45,10 @@ class RouteCalculator
             $source = $boardingPass->getSource();
             $destination = $boardingPass->getDestination();
 
+            if (isset($sourceMap[$source]) || isset($destinationMap[$destination])) {
+                throw new Exception\CrossedRouteException();
+            }
+            
             $sourceMap[$source] = $boardingPass;
             $destinationMap[$destination] = $boardingPass;
         }
@@ -58,7 +62,7 @@ class RouteCalculator
         }
         
         if ($firstPass === null) {
-            throw new \Exception("Source not found");
+            throw new Exception\ChainedRouteException();
         }
         
         // 3) Traverse through boarding passes from the beginning
@@ -67,6 +71,10 @@ class RouteCalculator
         while (isset($sourceMap[$currentPass->getDestination()])) {
             $currentPass = $sourceMap[$currentPass->getDestination()];
             $sortedPasses[] = $currentPass;
+        }
+        
+        if (count($sortedPasses) !== count($boardingPasses)) {
+            throw new Exception\RouteNotFoundException();
         }
         
         return $sortedPasses;

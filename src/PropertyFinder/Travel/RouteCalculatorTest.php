@@ -59,4 +59,62 @@ class RouteCalculatorTest extends TestCase
             $prevLeg = $currentLeg;
         }
     }
+    
+    /** @test */
+    public function calculateRouteShouldWorksWithOnlyOneBoardingPass()
+    {
+        $input = [
+            new BoardingPass\Train("Madrid", "Barcelona"),
+        ];
+        
+        $actual = $this->instance->calculateRoute($input);
+        
+        $this->assertNotEmpty($actual->getRouteLegs());
+    }
+    
+    /**
+     * @test @expectedException PropertyFinder\Travel\Exception\RouteNotFoundException
+     */
+    public function calculateRouteShouldThrowExceptionWhenBrokenRouteProvided()
+    {
+        $input = [
+            new BoardingPass\Train("Madrid", "Barcelona"),
+            new BoardingPass\Train("Moscow", "New York"),
+        ];
+        
+        $actual = $this->instance->calculateRoute($input);
+        
+        $this->assertNotEmpty($actual->getRouteLegs());
+    }
+    
+    /**
+     * @test @expectedException PropertyFinder\Travel\Exception\ChainedRouteException
+     */
+    public function calculateRouteShouldThrowExceptionWhenChainedRouteProvided()
+    {
+        $input = [
+            new BoardingPass\Train("Madrid", "Barcelona"),
+            new BoardingPass\Train("Barcelona", "Madrid"),
+        ];
+        
+        $actual = $this->instance->calculateRoute($input);
+        
+        $this->assertNotEmpty($actual->getRouteLegs());
+    }
+    
+    /**
+     * @test @expectedException PropertyFinder\Travel\Exception\CrossedRouteException
+     */
+    public function calculateRouteShouldThrowExceptionWhenMultipleBoardingPassWithSameSourceOrDestinationProvided()
+    {
+        $input = [
+            new BoardingPass\Train("Madrid", "Barcelona"),
+            new BoardingPass\Train("Barcelona", "Moscow"),
+            new BoardingPass\Train("Barcelona", "New York"),
+        ];
+        
+        $actual = $this->instance->calculateRoute($input);
+        
+        $this->assertNotEmpty($actual->getRouteLegs());
+    }
 }

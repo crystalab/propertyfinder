@@ -1,6 +1,8 @@
 <?php
 namespace PropertyFinder\Travel;
 
+use PropertyFinder\Travel\BoardingPass\BoardingPass;
+
 class TravelService
 {
     private $routeCalculator;
@@ -13,7 +15,12 @@ class TravelService
     }
     
     /**
-     * @param \PropertyFinder\Travel\BoardingPass\BoardingPass[] $boardingPasses
+     * Generate directions for a route described with a list of boarding passes.
+     *
+     * @param BoardingPass[] $boardingPasses                                     Unsorted list of boarding passes,
+     *                                                                           each element of a list should be
+     *                                                                           an instance derived from `BoardingPass`
+     *                                                                           see `BoardingPass` namespace
      *
      * @return string Directions
      */

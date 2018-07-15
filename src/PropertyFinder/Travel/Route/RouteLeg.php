@@ -1,24 +1,29 @@
 <?php
 namespace PropertyFinder\Travel\Route;
 
+use PropertyFinder\Travel\BoardingPass\BoardingPass;
+
 class RouteLeg
 {
-    private $source;
-    private $destination;
+    private $boardingPass;
     
-    public function __construct(string $source, string $destination)
+    public function __construct(BoardingPass $boardingPass)
     {
-        $this->source = $source;
-        $this->destination = $destination;
+        $this->boardingPass = $boardingPass;
     }
     
     public function getSource(): string
     {
-        return $this->source;
+        return $this->boardingPass->getSource();
     }
     
     public function getDestination(): string
     {
-        return $this->destination;
+        return $this->boardingPass->getDestination();
+    }
+    
+    public function getBoardingPass(): BoardingPass
+    {
+        return $this->boardingPass;
     }
 }

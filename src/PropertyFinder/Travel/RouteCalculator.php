@@ -20,10 +20,7 @@ class RouteCalculator
         
         return new Route\Route(
             array_map(function (BoardingPass $boardingPass) {
-                return new Route\RouteLeg(
-                    $boardingPass->getSource(),
-                    $boardingPass->getDestination()
-                );
+                return new Route\RouteLeg($boardingPass);
             }, $sortedPasses)
         );
     }

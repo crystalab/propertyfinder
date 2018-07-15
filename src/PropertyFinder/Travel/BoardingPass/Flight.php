@@ -1,6 +1,6 @@
 <?php
 namespace PropertyFinder\Travel\BoardingPass;
 
-class Train extends BoardingPass
+class Flight extends BoardingPass
 {
 }

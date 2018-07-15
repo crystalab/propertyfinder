@@ -1,8 +1,6 @@
 <?php
 namespace PropertyFinder\Travel;
 
-use PropertyFinder\Travel\Route\RoutePresenter;
-
 class TravelService
 {
     private $routeCalculator;

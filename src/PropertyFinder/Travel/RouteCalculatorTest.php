@@ -26,9 +26,9 @@ class RouteCalculatorTest extends TestCase
     public function calculateRouteShouldReturnLegForEachBoardingPass()
     {
         $input = [
-            new BoardingPass\Train("Madrid", "Barcelona"),
-            new BoardingPass\Train("Barcelona", "Gerona Airport"),
-            new BoardingPass\Train("Gerona Airport", "Stockholm"),
+            new BoardingPass\Bus("Madrid", "Barcelona"),
+            new BoardingPass\Bus("Barcelona", "Gerona Airport"),
+            new BoardingPass\Bus("Gerona Airport", "Stockholm"),
         ];
         
         $actual = $this->instance->calculateRoute($input);
@@ -40,9 +40,9 @@ class RouteCalculatorTest extends TestCase
     public function calculateRouteShouldReturnUnbrokenRoute()
     {
         $input = [
-            new BoardingPass\Train("Barcelona", "Gerona Airport"),
-            new BoardingPass\Train("Gerona Airport", "Stockholm"),
-            new BoardingPass\Train("Madrid", "Barcelona"),
+            new BoardingPass\Bus("Barcelona", "Gerona Airport"),
+            new BoardingPass\Bus("Gerona Airport", "Stockholm"),
+            new BoardingPass\Bus("Madrid", "Barcelona"),
         ];
         
         $actual = $this->instance->calculateRoute($input);
@@ -64,7 +64,7 @@ class RouteCalculatorTest extends TestCase
     public function calculateRouteShouldWorksWithOnlyOneBoardingPass()
     {
         $input = [
-            new BoardingPass\Train("Madrid", "Barcelona"),
+            new BoardingPass\Bus("Madrid", "Barcelona"),
         ];
         
         $actual = $this->instance->calculateRoute($input);
@@ -78,8 +78,8 @@ class RouteCalculatorTest extends TestCase
     public function calculateRouteShouldThrowExceptionWhenBrokenRouteProvided()
     {
         $input = [
-            new BoardingPass\Train("Madrid", "Barcelona"),
-            new BoardingPass\Train("Moscow", "New York"),
+            new BoardingPass\Bus("Madrid", "Barcelona"),
+            new BoardingPass\Bus("Moscow", "New York"),
         ];
         
         $actual = $this->instance->calculateRoute($input);
@@ -93,8 +93,8 @@ class RouteCalculatorTest extends TestCase
     public function calculateRouteShouldThrowExceptionWhenChainedRouteProvided()
     {
         $input = [
-            new BoardingPass\Train("Madrid", "Barcelona"),
-            new BoardingPass\Train("Barcelona", "Madrid"),
+            new BoardingPass\Bus("Madrid", "Barcelona"),
+            new BoardingPass\Bus("Barcelona", "Madrid"),
         ];
         
         $actual = $this->instance->calculateRoute($input);
@@ -108,9 +108,9 @@ class RouteCalculatorTest extends TestCase
     public function calculateRouteShouldThrowExceptionWhenMultipleBoardingPassWithSameSourceOrDestinationProvided()
     {
         $input = [
-            new BoardingPass\Train("Madrid", "Barcelona"),
-            new BoardingPass\Train("Barcelona", "Moscow"),
-            new BoardingPass\Train("Barcelona", "New York"),
+            new BoardingPass\Bus("Madrid", "Barcelona"),
+            new BoardingPass\Bus("Barcelona", "Moscow"),
+            new BoardingPass\Bus("Barcelona", "New York"),
         ];
         
         $actual = $this->instance->calculateRoute($input);

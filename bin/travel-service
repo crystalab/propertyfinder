@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+use PropertyFinder\Travel\BoardingPass\AirportBus;
+use PropertyFinder\Travel\BoardingPass\Flight;
+use PropertyFinder\Travel\BoardingPass\Train;
+use PropertyFinder\Travel\Message\CachingFactory;
+use PropertyFinder\Travel\RouteCalculator;
+use PropertyFinder\Travel\RoutePresenter;
+use PropertyFinder\Travel\TravelService;
+
+require_once(__DIR__ . "/../vendor/autoload.php");
+
+$travelService = new TravelService(
+    new RouteCalculator(),
+    new RoutePresenter(
+        new CachingFactory()
+    )
+);
+
+$directions = $travelService->getDirections([
+    new Flight("Gerona Airport", "Stockholm", "SK455", "3A", "45B", "Baggage drop at ticket counter 344."),
+    new Flight("Stockholm", "New York JFK", "SK22", "7B", "22", "Baggage will we automatically transferred from your last leg."),
+    new Train("Madrid", "Barcelona", "78A", "45B"),
+    new AirportBus("Barcelona", "Gerona Airport"),
+]);
+
+print($directions . PHP_EOL);

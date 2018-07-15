@@ -16,7 +16,7 @@ class BusMessage implements Message
             ? sprintf("Take bus %s", $boardingPass->getRouteNo())
             : "Take bus";
 
-        $pieces[] = sprintf("from %s to %s", $boardingPass->getSource(), $boardingPass->getDestination());
+        $pieces[] = sprintf("from %s to %s.", $boardingPass->getSource(), $boardingPass->getDestination());
 
         $pieces[] = $boardingPass->hasSeatAssignment()
             ? sprintf("Sit in seat %s.", $boardingPass->getSeat())

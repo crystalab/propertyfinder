@@ -13,7 +13,7 @@ class TrainMessage implements Message
         $pieces = [];
         
         $pieces[] = sprintf(
-            "Take train %s from %s to %s",
+            "Take train %s from %s to %s.",
             $boardingPass->getRouteNo(),
             $boardingPass->getSource(),
             $boardingPass->getDestination()

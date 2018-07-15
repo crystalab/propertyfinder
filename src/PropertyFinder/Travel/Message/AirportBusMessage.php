@@ -11,7 +11,7 @@ class AirportBusMessage implements Message
         assert(self::supports($boardingPass));
         
         return sprintf(
-            "Take the airport bus from %s to %s. No seat assignment",
+            "Take the airport bus from %s to %s. No seat assignment.",
             $boardingPass->getSource(),
             $boardingPass->getDestination()
         );

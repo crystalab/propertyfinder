@@ -14,7 +14,7 @@ class FlightMessage implements Message
         $pieces = [];
         
         $pieces[] = sprintf(
-            "From %s, take flight %s to %s",
+            "From %s, take flight %s to %s.",
             $boardingPass->getSource(),
             $boardingPass->getRouteNo(),
             $boardingPass->getDestination()

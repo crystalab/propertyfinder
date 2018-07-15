@@ -4,10 +4,12 @@ namespace PropertyFinder\Travel;
 class TravelService
 {
     private $routeCalculator;
+    private $routePresenter;
     
-    public function __construct(RouteCalculator $routeCalculator)
+    public function __construct(RouteCalculator $routeCalculator, RoutePresenter $routePresenter)
     {
         $this->routeCalculator = $routeCalculator;
+        $this->routePresenter = $routePresenter;
     }
     
     /**
@@ -17,6 +19,8 @@ class TravelService
      */
     public function getDirections(array $boardingPasses): string
     {
-        return "";
+        return $this->routePresenter->routeToText(
+            $this->routeCalculator->calculateRoute($boardingPasses)
+        );
     }
 }

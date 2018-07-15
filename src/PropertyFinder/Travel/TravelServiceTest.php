@@ -11,7 +11,8 @@ class TravelServiceTest extends TestCase
     protected function setUp()
     {
         $this->instance = new TravelService(
-            $this->createMock(RouteCalculator::class)
+            $this->createMock(RouteCalculator::class),
+            $this->createMock(RoutePresenter::class)
         );
     }
     

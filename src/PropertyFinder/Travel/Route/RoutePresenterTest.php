@@ -1,5 +1,5 @@
 <?php
-namespace PropertyFinder\Travel;
+namespace PropertyFinder\Travel\Route;
 
 use PHPUnit\Framework\TestCase;
 
@@ -16,7 +16,7 @@ class RoutePresenterTest extends TestCase
     /** @test */
     public function routeToTextShouldReturnEmptyStringWhenEmptyRouteProvided()
     {
-        $actual = $this->instance->routeToText([]);
+        $actual = $this->instance->routeToText(new Route([]));
         
         $this->assertEmpty($actual);
     }

@@ -1,7 +1,7 @@
 <?php
-namespace PropertyFinder\Travel\BoardingPass;
+namespace PropertyFinder\Travel\Route;
 
-abstract class BoardingPass
+class RouteLeg
 {
     private $source;
     private $destination;

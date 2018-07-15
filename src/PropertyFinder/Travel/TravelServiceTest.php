@@ -2,6 +2,7 @@
 namespace PropertyFinder\Travel;
 
 use PHPUnit\Framework\TestCase;
+use PropertyFinder\Travel\Route\RoutePresenter;
 
 class TravelServiceTest extends TestCase
 {

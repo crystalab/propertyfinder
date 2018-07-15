@@ -1,0 +1,22 @@
+{
+    "name": "ikhrustalev/propertyfinder",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ilya Khrustalev",
+            "email": "rzn.zippy@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}

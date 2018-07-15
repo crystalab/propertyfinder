@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b8c2eebc6365468110280175790ede9",
+    "content-hash": "819a186fe0fd1b46c13478dba43d4eb7",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -1412,7 +1412,44 @@
             "time": "2018-01-29T19:49:41+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "limedeck/phpunit-detailed-printer",
+            "version": "4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LimeDeck/phpunit-detailed-printer.git",
+                "reference": "a61005f2710c3981bb7c87d6b7462d67e196cb26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LimeDeck/phpunit-detailed-printer/zipball/a61005f2710c3981bb7c87d6b7462d67e196cb26",
+                "reference": "a61005f2710c3981bb7c87d6b7462d67e196cb26",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LimeDeck\\Testing\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "LimeDeck",
+                    "email": "mail@limedeck.io"
+                }
+            ],
+            "description": "Formatter for the detailed output of PHPUnit tests.",
+            "time": "2018-05-10T12:58:19+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],

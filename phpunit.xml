@@ -1,4 +1,10 @@
-<phpunit>
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.1/phpunit.xsd"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        printerClass="LimeDeck\Testing\Printer">
     <testsuites>
         <testsuite name="main">
             <directory>src</directory>

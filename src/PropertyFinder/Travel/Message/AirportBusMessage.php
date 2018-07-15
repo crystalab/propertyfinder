@@ -4,7 +4,7 @@ namespace PropertyFinder\Travel\Message;
 use PropertyFinder\Travel\BoardingPass\AirportBus;
 use PropertyFinder\Travel\BoardingPass\BoardingPass;
 
-class AirportBusMessage extends Message
+class AirportBusMessage implements Message
 {
     public function formatMessage(BoardingPass $boardingPass): string
     {
